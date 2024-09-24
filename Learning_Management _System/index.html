@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/25408e8f65.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #parentBox {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        #textBox {
+            margin-left:150px;
+            width: 79%;
+            height: 58px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        #logo img {
+            border-radius: 20px;
+            height: 50px;
+        }
+
+        #textBox a {
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            transition: color 0.3s; /* Smooth transition for hover effect */
+        }
+
+        #textBox a:hover {
+            color: crimson;
+            cursor: pointer;
+        }
+
+        #button1 {
+            width: 170px;
+            height: 41px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2fdff;
+            font-size: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #5458ca;
+            font-weight: bold;
+            letter-spacing: 0.1px;
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        #button2 {
+            width: 77px;
+            height: 43px;
+            border-radius: 7px;
+            border: 1px solid #ed0331;
+            color: #ed0331;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            font-size: 13px;
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        #button1:hover {
+            background-color: #cfe2e6;
+            cursor: pointer;
+        }
+
+        #button2:hover {
+            background-color: #f8dee3;
+            cursor: pointer;
+        }
+
+        button > img {
+            width: 20px;
+            margin-left: 5px;
+        }
+
+        #homeBody {
+            height: 300px;
+            margin-top: 45px;
+            text-align: center;
+        }
+
+        #homeBody > h1 {
+            margin: 70px;
+            font-size: 76px;
+            line-height: 60px;
+            letter-spacing: 1px;
+            font-weight: bolder;
+            font-family: 'Secular One', sans-serif;
+        }
+
+    
+
+        #homeBody > h2 {
+            line-height: 30px;
+            font-size: 30px;
+        }
+
+
+        #homeBody > button {
+            background-color: #E20F31;
+            border-radius: 5px;
+            border: none;
+            font-weight: 600;
+            width: 18%;
+            height: 45px;
+            margin-top: 50px;
+            font-size: 16px;
+            color: white;
+            text-transform: uppercase;
+            font-family: 'Open Sans', sans-serif;
+            transition: background-color 0.3s; 
+        }
+
+        #homeBody > button:hover {
+            background-color: #c01e39;
+            cursor: pointer;
+        }
+
+        #fixedModal {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.233);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #middleFixModal {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            padding: 30px;
+            width: 30%;
+            height: 200px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for modal */
+        }
+
+        #middleFixModal button {
+            background-color: crimson;
+            color: white;
+            font-size: 20px;
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+        }
+
+        #middleFixModal button:hover {
+            background-color: red;
+            transform: scale(1.05);
+        }
+
+        #closeMark {
+            font-size: 30px;
+            color: crimson; /* Icon color */
+        }
+
+        #closeMark:hover {
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.3); /* Subtle hover effect */
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div id="container">
+        <div id="parentBox">
+            <div id="textBox">
+                <div><a href="#">COURSES</a></div>
+                <div><a href="#">SUCESSFUL STORIES</a></div>
+                <div><a href="#">EVENTS</a></div>
+                <div><a href="#">FEES & ISA</a></div>
+                <div><a href="#">FAQ</a></div>
+                <div><a href="#">ABOUT US</a></div>
+                <div>
+                    <button id="button2">LOGIN</button>
+                </div>
+            </div>
+        </div>
+        <div id="homeBody">
+            <h1>Driven by Outcomes,</h1>
+            <h1>Fuelled by Ambitions.</h1>
+            <h2>Learning-Management-Platform</h2>
+            <button>signup to explore more...</button>
+        </div>
+    </div>
+    <div id="fixedModal">
+        <div>
+            <i class="fa-regular fa-circle-xmark" id="closeMark"></i>
+        </div>
+        <div id="middleFixModal">
+            <a href="./Admin-login.html" target="_blank">
+                <button id="Admin">Admin Login</button>
+            </a>
+            <a href="./User-login.html" target="_blank">
+                <button id="Student">Student Login</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const loginAs = () => {
+            document.getElementById("fixedModal").style.display = "flex";
+        };
+
+        const closeIt = () => {
+            document.getElementById("fixedModal").style.display = "none";
+        };
+
+        const setAdmin = () => {
+            // Logic for setting admin (if needed)
+        };
+
+        document.getElementById("button2").addEventListener("click", loginAs);
+        document.getElementById("closeMark").addEventListener("click", closeIt);
+        document.getElementById("Admin").addEventListener("click", setAdmin);
+    </script>
+</body>
+</html>

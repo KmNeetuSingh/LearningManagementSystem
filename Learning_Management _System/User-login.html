@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        #form {
+            width: 34%;
+            box-shadow: rgba(17, 17, 26, 0.1) 0 4px 16px, rgba(17, 17, 26, 0.05) 0 8px 32px;
+            margin: auto;
+            border-radius: 15px;
+        }
+        h3 {
+            padding-top: 30px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 4px;
+            padding-left: 15px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            font-size: 14px;
+        }
+        form {
+            width: 86%;
+            margin: auto;
+        }
+        #submit {
+            border: none;
+            background-color: #e8eaed;
+            height: 47px;
+            margin: 40px 0 20px;
+            color: #afb2b8;
+        }
+        #submit:hover {
+            background-color: #2563EB;
+            color: white;
+            cursor: pointer;
+        }
+        #google {
+            background-color: white;
+            height: 47px;
+            margin: 5px 0 40px;
+            font-weight: 600;
+        }
+        h5 {
+            width: 92%;
+            margin: 30px auto auto;
+            color: #6b7280;
+            text-align: center;
+        }
+        #signText {
+            text-align: center;
+            color: #6b7280;
+            padding-bottom: 30px;
+        }
+        #bottom {
+            text-align: center;
+            font-size: 15px;
+            margin: -10px;
+            color: #6b7280;
+        }
+        span {
+            color: #2563eb;
+        }
+        #eye {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            color: #969595;
+        }
+        form > div {
+            position: relative;
+            width: 100%;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="form">
+        <h3>Sign In</h3>
+        <form>
+            <label>Email</label>
+            <div>
+                <input id="email" type="email" placeholder="Enter email" required="">
+            </div>
+            <label>Password</label>
+            <div id="passwordBox">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+                <input type="password" name="password" placeholder="Enter Password" autocomplete="current-password" required="" id="password">
+                <i class="far fa-eye" id="eye"></i>
+            </div>
+            <input id="submit" type="submit" value="Sign In">
+            <input id="google" type="submit" value="CONTINUE WITH GOOGLE">
+            <p id="signText">Don't have an account?
+                <a href="./User-Signup.html">
+                    <span>Sign Up</span>
+                </a>
+            </p>
+        </form>
+    </div>
+    <p id="bottom">© 2024 by Your Company Privacy Policy & Terms and Conditions</p>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", signin);
+
+        function signin(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            var checkStr = localStorage.getItem("allUser");
+            var checkArray = JSON.parse(checkStr);
+
+            var flagM = false;
+            var flagP = false;
+
+            checkArray.map((element) => {
+                if (element.email === email && element.password === password) {
+                    flagM = true;
+                    flagP = true;
+                    let currentName = element.name;
+                    let currentId = element.id;
+                    let currentUser = "student";
+                    localStorage.setItem("username", currentName);
+                    localStorage.setItem("userid", currentId);
+                    localStorage.setItem("useraccess", currentUser);
+                } else if (element.email === email) {
+                    flagM = true;
+                } else if (element.password === password) {
+                    flagP = true;
+                }
+            });
+
+            if (flagM && flagP) {
+                alert("Login Successful");
+                window.location.href = "./course.html";
+            } else if (!flagM && !flagP) {
+                alert("Both email and password are wrong");
+            } else if (!flagM) {
+                alert("Incorrect email");
+            } else if (!flagP) {
+                alert("Incorrect password");
+            }
+        }
+
+        var eye = document.querySelector('#eye');
+        var pass = document.querySelector('#password');
+
+        eye.addEventListener('click', function () {
+            var type = pass.getAttribute('type') === 'password' ? 'text' : 'password';
+            pass.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+</body>
+</html>

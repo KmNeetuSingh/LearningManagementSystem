@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Course</title>
+        <script src="https://kit.fontawesome.com/25408e8f65.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Archivo', sans-serif;
+            }
+            body {
+                background-color: #f3f4f6;
+            }
+            #mainNavbar {
+                background-color: #ffffff;
+                box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(30, 30, 30, 0.000000001) 0 0 0 1px;
+            }
+            #navbar {
+                display: grid;
+                grid-template-columns: 11% 67% 22%;
+                height: 60px;
+                border-bottom: 1px solid #eff0f2;
+            }
+            #Logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #Logo a {
+                width: 53%;
+            }
+            #Logo img {
+                width: 100%;
+            }
+            #middleNav {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            #middleNav a {
+                text-decoration: none;
+                font-size: 13px;
+                color: #747680;
+                margin: auto;
+            }
+            #middleNav div {
+                line-height: 52px;
+            }
+            #navbar2 {
+                height: 65px;
+                display: flex;
+                align-items: center;
+                padding: 0 60px;
+            }
+            #navbar2 > h3 {
+                letter-spacing: 0.4px;
+                color: #1f2937;
+            }
+            #navbar2Right {
+                width: 22%;
+                display: flex;
+                justify-content: space-between;
+            }
+            #navbar2Right > button {
+                font-size: 11px;
+                text-transform: uppercase;
+                background-color: #1f2937;
+                border-radius: 5px;
+                color: white;
+                height: 30px;
+                width: 47%;
+                font-weight: 600;
+                letter-spacing: 0.1rem;
+            }
+            #profile {
+                color: #747680;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 13px;
+                letter-spacing: 0.4px;
+            }
+            #profileClicking {
+                gap: 5px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            #profileClicking:hover {
+                cursor: pointer;
+            }
+            #userName {
+                text-transform: uppercase;
+            }
+            #dropdown {
+                font-size: 10px;
+                color: #4f5158;
+            }
+            #dropDownList {
+                border: 1px solid #dedfe0;
+                position: absolute;
+                right: 35px;
+                width: 160px;
+                top: 50px;
+                background-color: white;
+                /* display: flex; */
+                flex-direction: column;
+                justify-content: space-between;
+                border-radius: 5px;
+                box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+                display: none;
+            }
+            #dropDownList a {
+                font-size: 13px;
+                text-decoration: none;
+                color: #494a50;
+                line-height: 35px;
+                padding: 0 12px;
+            }
+            #dropDownList a:hover {
+                background-color: #eeeef0;
+            }
+
+            #logOut {
+                border-top: 1px solid #e0e1e4;
+            }
+            #mainBody {
+                margin: 40px 60px;
+            }
+            #information {
+                display: flex;
+                justify-content: space-between;
+            }
+            #leftInfo {
+                width: 30%;
+            }
+            #leftInfo > p:last-child {
+                font-size: 13px;
+                color: #61636d;
+                word-spacing: 2.5px;
+                line-height: 19px;
+                margin-top: 8px;
+            }
+            #leftInfo > p:first-child {
+                font-size: 17px;
+                color: rgb(24, 21, 21);
+                word-spacing: 2.5px;
+            }
+            #rightInfo {
+                width: 66.5%;
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: rgba(0, 0, 0, 0.16) 0 1px 3px;
+                padding: 0 23px;
+            }
+            #rightInfoTop {
+                padding: 20px 0;
+            }
+            #rightInfoTop > input {
+                width: 63%;
+                height: 38px;
+                border: 1px solid #D1D5DB;
+                border-radius: 6px;
+                margin-top: 5px;
+            }
+            #rightInfoTop > label {
+                display: block;
+                font-size: 13px;
+                color: #3e4046;
+                word-spacing: 2.5px;
+            }
+            #rightInfoBottom {
+                padding: 13px;
+                display: flex;
+                justify-content: flex-end;
+            }
+            #rightInfoBottom > button {
+                background-color: #1f2937;
+                padding: 8px 14px;
+                border-radius: 4px;
+                color: #ffffff;
+                font-weight: bold;
+                font-size: 12px;
+                border: none;
+            }
+            #rightInfoBottom > button:hover {
+                background-color: #374151;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="mainNavbar">
+            <div id="navbar">
+                <div id="Logo">
+                    <a href="./course.html">
+                        <img src="https://sso.masaischool.com/brand_dark.svg" alt="Masai logo"></a>
+                </div>
+                <div id="middleNav">
+                    <div class="navTextBox">
+                        <a href="./lectures.html" class="navText">Lectures</a>
+                    </div>
+                    <div class="navTextBox">
+                        <a href="./Assignment.html" class="navText">Assignments</a>
+                    </div>
+                    <div class="navTextBox">
+                        <a href="" class="navText">Quizzes</a>
+                    </div>
+                    <div class="navTextBox">
+                        <a href="" class="navText">Tickets</a>
+                    </div>
+                    <div class="navTextBox">
+                        <a href="" class="navText">Discussion</a>
+                    </div>
+                    <div class="navTextBox">
+                        <a href="" class="navText">Notifications</a>
+                    </div>
+                    <div class="navTextBox">
+                        <a href="" class="navText">Messages</a>
+                    </div>
+                    <div class="navTextBox">
+                        <a href="" class="navText">Electives</a>
+                    </div>
+                    <div class="navTextBox">
+                        <a href="" class="navText">Announcements</a>
+                    </div>
+                    <div class="navTextBox">
+                        <a href="" class="navText">Courses</a>
+                    </div>
+                </div>
+                <div id="profile">
+                    <div id="profileClicking">
+                        <div id="userName"></div>
+                        <div id="userId"></div>
+                        <div id="dropdown">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="dropDownList">
+                    <a href="" id="allStudentsData">Students Account</a>
+                    <a href="./profile.html">Profile</a>
+                    <a href="./index.html" id="logOut">Log Out</a>
+                </div>
+            </div>
+            <div id="navbar2">
+                <h3>Profile</h3>
+            </div>
+        </div>
+        <div id="mainBody">
+            <div id="information">
+                <div id="leftInfo">
+                    <p>Profile Information</p>
+                    <p>Update your account's profile information and email address.</p>
+                </div>
+                <div id="rightInfo">
+                    <div id="rightInfoTop">
+                        <label for="">Name</label>
+                        <input type="text" id="profileUserName">
+                    </div>
+                    <div id="rightInfoBottom">
+                        <button id="Save">SAVE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+
+    forProfile();
+
+    function forProfile() {
+        let currentName = localStorage.getItem("username");
+        let currentId = localStorage.getItem("userid");
+        let currentUser = localStorage.getItem("useraccess");
+
+        profileUserName.value = currentName;
+        document.getElementById("profileUserName").style.textTransform = "uppercase";
+
+        if (currentUser == "admin") {
+            document.getElementById("userName").innerText = `${currentName}`;
+            document.getElementById("userId").innerText = `(Admin_${currentId})`;
+            // let checkArray = JSON.parse(localStorage.getItem("allAdmin"));
+
+        } else if (currentUser == "student") {
+            document.getElementById("userName").innerText = `${currentName}`;
+            document.getElementById("userId").innerText = `(pw07_00${currentId})`;
+            document.getElementById("allStudentsData").style.display = "none";
+        }
+    }
+
+
+    let showDD = true;
+    showDropDown = () => {
+        if (showDD) {
+            document.getElementById("dropDownList").style.display = "flex"
+            showDD = false;
+            console.log(showDD);
+        } else {
+            document.getElementById("dropDownList").style.display = "none"
+            showDD = true;
+            console.log(showDD);
+        }
+    }
+    logOut = () => {
+        localStorage.removeItem("username")
+        localStorage.removeItem("userid")
+        localStorage.removeItem("useraccess")
+    }
+
+    changeName = () => {
+        let NewName = profileUserName.value;
+        localStorage.setItem("username", NewName);
+        forProfile();
+    }
+
+    document.getElementById("logOut").addEventListener("click", logOut);
+    document.getElementById("profileClicking").addEventListener("click", showDropDown);
+    document.getElementById("Save").addEventListener("click", changeName);
+</script>
