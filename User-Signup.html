@@ -1,10 +1,10 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sign In</title>
+        <title>Sign Up</title>
         <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
         <style>
             * {
@@ -24,6 +24,7 @@
                 width: 100%;
                 height: 40px;
                 margin-bottom: 4px;
+                /* margin-top: -10px; */
                 padding-left: 15px;
                 border-radius: 6px;
                 border: 1px solid #d1d5db;
@@ -45,12 +46,6 @@
                 color: white;
                 cursor: pointer;
             }
-            #google {
-                background-color: white;
-                height: 47px;
-                margin: 5px 0 40px;
-                font-weight: 600;
-            }
             h5 {
                 width: 92%;
                 margin: 30px auto auto;
@@ -64,7 +59,6 @@
             }
             #bottom {
                 text-align: center;
-                font-size: 15px;
                 margin: -10px;
                 color: #6b7280;
             }
@@ -90,70 +84,86 @@
     </head>
     <body>
         <div id="form">
-            <h3>Sign In</h3>
+            <h3>Sign Up</h3>
             <form>
+                <label>Full name</label>
+                <div>
+                    <input id="name" type="text" required="" placeholder="Enter your full name">
+                </div>
                 <label>Email</label>
                 <div>
-                    <input id="email" type="email" placeholder="Enter email" required="">
+                    <input id="email" type="email" required="" placeholder="Enter email">
                 </div>
                 <label>Password</label>
                 <div id="passwordBox">
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-                    <input type="password" name="password" placeholder="Enter Password" autocomplete="current-password" required="" id="password">
+                    <input type="password" placeholder="Enter Password" name="password" autocomplete="current-password" required="" id="password">
                     <i class="far fa-eye" id="eye"></i>
                 </div>
-                <input id="submit" type="submit" value="Sign In">
-                <input id="google" type="submit" value="CONTINUE WITH GOOGLE">
-                <p id="signText">Don't have an account?
-                    <a href="./User-Signup.html">
-                        <span>Sign Up</span>
+                <h5>By signing up, I accept the Neet
+                    <span>
+                        <u>Terms and Service</u>
+                    </span>
+                    and acknowledge the
+                    <span>
+                        <u>Privacy Policy</u>
+                    </span>
+                </h5>
+                <input id="submit" type="submit" value="Sign Up">
+                <p id="signText">Already have an account?
+                    <a href="./User-login.html">
+                        <span>Sign In</span>
                     </a>
                 </p>
             </form>
         </div>
-        <p id="bottom">© 2022 by Your Company Name. Privacy Policy & Terms and Conditions</p> <!-- Updated footer text -->
+        <p id="bottom">© 2022 by Neet Privacy Policy & Terms and Conditions</p>
     </body>
 </html>
-
 <script>
-    document.querySelector("form").addEventListener("submit", signin);
+    document.querySelector("form").addEventListener("submit", signup);
 
-    function signin() {
+    var getStr = localStorage.getItem("allUser");
+    var loginArray = JSON.parse(getStr) || [];
+
+    function signup() {
         event.preventDefault();
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+        console.log("gfsdgsdfd")
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        if(loginArray == ""){
+            var id = 0;
+        }
 
-        var checkStr = localStorage.getItem("allUser");
-        var checkArray = JSON.parse(checkStr);
+        flag = true;
+        if (name == "" || email == "" || password == "") {
+            alert("Kindly fill all the details")
+        } else if (password.length < 8) {
+            alert("Password should be atleast 8 characters");
+        } else {
+            loginArray.map((elem) => {
+                id = elem.id;
+                if (elem.email == email) {
+                    alert(`This email ${email} is already have been registered`)
+                    flag = false;
+                }
+            })
+            if (flag == true) {
+                id++;
+                var newUser = {
+                    id: id,
+                    name: name,
+                    email: email,
+                    password: password
+                }
+                loginArray.push(newUser);
 
-        var flagM = false;
-        var flagP = false;
-
-        checkArray.map((element) => {
-            if (element.email == email && element.password == password) {
-                flagM = true;
-                flagP = true;
-                let currentName = element.name;
-                let currentId = element.id;
-                let currentUser = "student";
-                localStorage.setItem("username", currentName);
-                localStorage.setItem("userid", currentId);
-                localStorage.setItem("useraccess", currentUser);
-            } else if (element.email == email) {
-                flagM = true;
-            } else if (element.password == password) {
-                flagP = true;
+                var setStr = JSON.stringify(loginArray);
+                localStorage.setItem("allUser", setStr);
+                alert("Student Account Created")
+                window.location.href="./User-login.html";
             }
-        });
-        if (flagM && flagP) {
-            alert("Login Successful");
-            window.location.href = "./course.html";
-        } else if (flagM == false && flagP == false) {
-            alert("Both email and password are wrong");
-        } else if (!flagM) {
-            alert("Incorrect email");
-        } else if (!flagP) {
-            alert("Incorrect password");
         }
     }
     var eye = document.querySelector('#eye');
