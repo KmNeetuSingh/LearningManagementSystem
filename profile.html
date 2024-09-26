@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -23,9 +23,10 @@
             }
             #navbar {
                 display: grid;
-                grid-template-columns: 11% 67% 22%;
+                grid-template-columns: repeat(5, 1fr);
                 height: 60px;
                 border-bottom: 1px solid #eff0f2;
+                padding: 0 20px;
             }
             #Logo {
                 display: flex;
@@ -37,47 +38,29 @@
             }
             #Logo img {
                 width: 100%;
+                height: auto;
             }
             #middleNav {
-                width: 100%;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                flex-wrap: wrap;
             }
             #middleNav a {
                 text-decoration: none;
                 font-size: 13px;
                 color: #747680;
-                margin: auto;
-            }
-            #middleNav div {
-                line-height: 52px;
+                margin: 10px;
             }
             #navbar2 {
                 height: 65px;
                 display: flex;
                 align-items: center;
-                padding: 0 60px;
+                padding: 0 20px;
             }
             #navbar2 > h3 {
                 letter-spacing: 0.4px;
                 color: #1f2937;
-            }
-            #navbar2Right {
-                width: 22%;
-                display: flex;
-                justify-content: space-between;
-            }
-            #navbar2Right > button {
-                font-size: 11px;
-                text-transform: uppercase;
-                background-color: #1f2937;
-                border-radius: 5px;
-                color: white;
-                height: 30px;
-                width: 47%;
-                font-weight: 600;
-                letter-spacing: 0.1rem;
             }
             #profile {
                 color: #747680;
@@ -87,99 +70,36 @@
                 font-size: 13px;
                 letter-spacing: 0.4px;
             }
-            #profileClicking {
-                gap: 5px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            #profileClicking:hover {
-                cursor: pointer;
-            }
-            #userName {
-                text-transform: uppercase;
-            }
-            #dropdown {
-                font-size: 10px;
-                color: #4f5158;
-            }
-            #dropDownList {
-                border: 1px solid #dedfe0;
-                position: absolute;
-                right: 35px;
-                width: 160px;
-                top: 50px;
-                background-color: white;
-                /* display: flex; */
-                flex-direction: column;
-                justify-content: space-between;
-                border-radius: 5px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-                display: none;
-            }
-            #dropDownList a {
-                font-size: 13px;
-                text-decoration: none;
-                color: #494a50;
-                line-height: 35px;
-                padding: 0 12px;
-            }
-            #dropDownList a:hover {
-                background-color: #eeeef0;
-            }
-
-            #logOut {
-                border-top: 1px solid #e0e1e4;
-            }
             #mainBody {
-                margin: 40px 60px;
+                margin: 40px 20px;
             }
             #information {
                 display: flex;
-                justify-content: space-between;
+                flex-direction: column;
             }
             #leftInfo {
-                width: 30%;
-            }
-            #leftInfo > p:last-child {
-                font-size: 13px;
-                color: #61636d;
-                word-spacing: 2.5px;
-                line-height: 19px;
-                margin-top: 8px;
-            }
-            #leftInfo > p:first-child {
-                font-size: 17px;
-                color: rgb(24, 21, 21);
-                word-spacing: 2.5px;
+                width: 100%;
+                margin-bottom: 20px;
             }
             #rightInfo {
-                width: 66.5%;
+                width: 100%;
                 background-color: white;
                 border-radius: 5px;
                 box-shadow: rgba(0, 0, 0, 0.16) 0 1px 3px;
-                padding: 0 23px;
-            }
-            #rightInfoTop {
-                padding: 20px 0;
+                padding: 20px;
             }
             #rightInfoTop > input {
-                width: 63%;
+                width: 100%;
                 height: 38px;
                 border: 1px solid #D1D5DB;
                 border-radius: 6px;
                 margin-top: 5px;
-            }
-            #rightInfoTop > label {
-                display: block;
-                font-size: 13px;
-                color: #3e4046;
-                word-spacing: 2.5px;
+                padding: 0 10px;
             }
             #rightInfoBottom {
-                padding: 13px;
                 display: flex;
                 justify-content: flex-end;
+                padding-top: 10px;
             }
             #rightInfoBottom > button {
                 background-color: #1f2937;
@@ -192,6 +112,24 @@
             }
             #rightInfoBottom > button:hover {
                 background-color: #374151;
+            }
+            @media (min-width: 768px) {
+                #information {
+                    flex-direction: row;
+                }
+                #leftInfo {
+                    width: 30%;
+                    margin-right: 20px;
+                }
+                #rightInfo {
+                    width: 66.5%;
+                }
+                #navbar {
+                    grid-template-columns: repeat(10, 1fr);
+                }
+                #middleNav a {
+                    margin: 0;
+                }
             }
         </style>
     </head>
@@ -273,7 +211,6 @@
     </body>
 </html>
 <script>
-
     forProfile();
 
     function forProfile() {
@@ -287,8 +224,6 @@
         if (currentUser == "admin") {
             document.getElementById("userName").innerText = `${currentName}`;
             document.getElementById("userId").innerText = `(Admin_${currentId})`;
-            // let checkArray = JSON.parse(localStorage.getItem("allAdmin"));
-
         } else if (currentUser == "student") {
             document.getElementById("userName").innerText = `${currentName}`;
             document.getElementById("userId").innerText = `(pw07_00${currentId})`;
@@ -296,23 +231,20 @@
         }
     }
 
-
     let showDD = true;
     showDropDown = () => {
         if (showDD) {
-            document.getElementById("dropDownList").style.display = "flex"
+            document.getElementById("dropDownList").style.display = "flex";
             showDD = false;
-            console.log(showDD);
         } else {
-            document.getElementById("dropDownList").style.display = "none"
+            document.getElementById("dropDownList").style.display = "none";
             showDD = true;
-            console.log(showDD);
         }
     }
     logOut = () => {
-        localStorage.removeItem("username")
-        localStorage.removeItem("userid")
-        localStorage.removeItem("useraccess")
+        localStorage.removeItem("username");
+        localStorage.removeItem("userid");
+        localStorage.removeItem("useraccess");
     }
 
     changeName = () => {

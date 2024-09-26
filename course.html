@@ -1,368 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Course</title>
-        <script src="https://kit.fontawesome.com/25408e8f65.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Archivo', sans-serif;
-            }
-            body {
-                background-color: #f3f4f6;
-            }
-            #mainNavbar {
-                background-color: #ffffff;
-                box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(30, 30, 30, 0.000000001) 0 0 0 1px;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course</title>
+    <script src="https://kit.fontawesome.com/25408e8f65.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Archivo', sans-serif;
+        }
+        body {
+            background-color: #f3f4f6;
+        }
+        #mainNavbar {
+            background-color: #ffffff;
+            box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(30, 30, 30, 0.000000001) 0 0 0 1px;
+        }
+        #navbar {
+            display: grid;
+            grid-template-columns: 11% 67% 22%;
+            height: 60px;
+            border-bottom: 1px solid #eff0f2;
+        }
+        #Logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #Logo a {
+            width: 53%;
+        }
+        #Logo img {
+            width: 40%;
+        }
+        #middleNav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #middleNav a {
+            text-decoration: none;
+            font-size: 13px;
+            color: #747680;
+            margin: auto;
+        }
+        #middleNav div {
+            line-height: 52px;
+        }
+        #navbar2 {
+            height: 65px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+        }
+        #navbar2 > h3 {
+            color: #1f2937;
+        }
+        #navbar2Right {
+            width: 22%;
+            display: flex;
+            justify-content: space-between;
+        }
+        #navbar2Right > button {
+            font-size: 11px;
+            text-transform: uppercase;
+            background-color: #1f2937;
+            border-radius: 5px;
+            color: white;
+            height: 30px;
+            width: 47%;
+            font-weight: 600;
+            letter-spacing: 0.1rem;
+        }
+        #mainBody {
+            padding: 40px 60px;
+        }
+        #lectureBox {
+            box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+            border-radius: 8px;
+            background-color: white;
+            margin: auto;
+            padding: 17px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0 20px 25px -5px, rgba(0, 0, 0, 0.04) 0 10px 10px -5px;
+        }
+        #lecture {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px 5px;
+        }
+        #lectureTime {
+            width: 14%;
+            height: 85px;
+            background-color: #6366f1;
+            text-align: center;
+            color: white;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            font-weight: 500;
+        }
+        #lectureName {
+            font-size: 21px;
+            color: #4f4ce7;
+        }
+        #lectureName > span {
+            color: #4f4ce7;
+        }
+        #lectureOtherDetails {
+            width: 78%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-left: 20px;
+        }
+        #extraButtons > button:first-child {
+            background-color: #dbeafe;
+            border-radius: 7px;
+            border: none;
+            padding: 5px 7px;
+            font-size: 12px;
+        }
+        #extraButtons > button:last-child {
+            background-color: #dcfce7;
+            border: none;
+            border-radius: 14px;
+            padding: 5px 7px;
+            font-size: 12px;
+        }
+        #details {
+            color: #6b7280;
+            margin-top: 35px;
+        }
+        #profile {
+            color: #747680;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 13px;
+            letter-spacing: 0.4px;
+        }
+        #profileClicking {
+            gap: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #profileClicking:hover {
+            cursor: pointer;
+        }
+        #userName {
+            text-transform: uppercase;
+        }
+        #dropdown {
+            font-size: 10px;
+            color: #4f5158;
+        }
+        #dropDownList {
+            border: 1px solid #dedfe0;
+            position: absolute;
+            right: 35px;
+            width: 160px;
+            top: 50px;
+            background-color: white;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+            display: none;
+        }
+        #dropDownList a {
+            font-size: 13px;
+            text-decoration: none;
+            color: #494a50;
+            line-height: 35px;
+            padding: 0 12px;
+        }
+        #dropDownList a:hover {
+            background-color: #eeeef0;
+        }
+        #logOut {
+            border-top: 1px solid #e0e1e4;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
             #navbar {
-                display: grid;
-                grid-template-columns: 11% 67% 22%;
-                height: 60px;
-                border-bottom: 1px solid #eff0f2;
-            }
-            #Logo {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            #Logo a {
-                width: 53%;
-            }
-            #Logo img {
-                width: 40%;
-            }
-            #middleNav {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            #middleNav a {
-                text-decoration: none;
-                font-size: 13px;
-                color: #747680;
-                margin: auto;
-            }
-            #middleNav div {
-                line-height: 52px;
+                grid-template-columns: 1fr;
+                height: auto;
             }
             #navbar2 {
-                height: 65px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 60px;
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
             }
             #navbar2 > h3 {
-                color: #1f2937;
-            }
-            #navbar2Right {
-                width: 22%;
-                display: flex;
-                justify-content: space-between;
-            }
-            #navbar2Right > button {
-                font-size: 11px;
-                text-transform: uppercase;
-                background-color: #1f2937;
-                border-radius: 5px;
-                color: white;
-                height: 30px;
-                width: 47%;
-                font-weight: 600;
-                letter-spacing: 0.1rem;
+                margin-bottom: 10px;
             }
             #mainBody {
-                padding: 40px 60px;
-            }
-            #lectureBox {
-                box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
-                border-radius: 8px;
-                background-color: white;
-                margin: auto;
-                padding: 17px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0 20px 25px -5px, rgba(0, 0, 0, 0.04) 0 10px 10px -5px;
+                padding: 20px;
             }
             #lecture {
-                display: flex;
-                border-bottom: 1px solid #e5e7eb;
-                padding: 20px 5px;
-
+                flex-direction: column;
+                padding: 15px;
             }
             #lectureTime {
-                width: 14%;
-                height: 85px;
-                /* border: 1px solid red; */
-                background-color: #6366f1;
-                text-align: center;
-                color: white;
-                padding: 15px;
-                display: flex;
+                width: 100%;
+                height: auto;
+            }
+            #lectureOtherDetails {
+                width: 100%;
+                margin-left: 0;
+            }
+            #extraButtons {
                 flex-direction: column;
-                justify-content: space-evenly;
-                font-weight: 500;
+                align-items: flex-start;
+            }
+            #navbar2Right {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #navbar2 > button {
+                width: 100%;
+                margin-bottom: 5px;
             }
             #lectureName {
-                font-size: 21px;
-                color: #4f4ce7;
+                font-size: 18px;
             }
-            #lectureName > span {
-                color: #4f4ce7;
+            #lectureTime {
+                padding: 10px;
             }
-
             #lectureOtherDetails {
-                width: 78%;
-                /* border: 1px solid blue; */
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                margin-left: 20px;
-            }
-            #extraButtons >button:first-child {
-                background-color: #dbeafe;
-                /* color: blue; */
-                border-radius: 7px;
-                border: none;
-                padding: 5px 7px;
-                font-size: 12px;
-            }
-            #extraButtons >button:last-child {
-                background-color: #dcfce7;
-                border: none;
-                /* color: green; */
-                border-radius: 14px;
-                padding: 5px 7px;
-                font-size: 12px;
-            }
-            #details {
-                color: #6b7280;
-                margin-top: 35px;
-            }
-            #profile {
-                color: #747680;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 13px;
-                letter-spacing: 0.4px;
-            }
-            #profileClicking {
-                gap: 5px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            #profileClicking:hover {
-                cursor: pointer;
-            }
-            #userName {
-                text-transform: uppercase;
-            }
-            #dropdown {
-                font-size: 10px;
-                color: #4f5158;
+                margin-left: 0;
             }
             #dropDownList {
-                border: 1px solid #dedfe0;
-                position: absolute;
-                right: 35px;
-                width: 160px;
-                top: 50px;
-                background-color: white;
-                /* display: flex; */
-                flex-direction: column;
-                justify-content: space-between;
-                border-radius: 5px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-                display: none;
+                width: 100%;
+                right: 0;
             }
-            #dropDownList a {
-                font-size: 13px;
-                text-decoration: none;
-                color: #494a50;
-                line-height: 35px;
-                padding: 0 12px;
-            }
-            #dropDownList a:hover {
-                background-color: #eeeef0;
-            }
-
-            #logOut {
-                border-top: 1px solid #e0e1e4;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="mainNavbar">
-            <div id="navbar">
-                <div id="Logo">
-                    <a href="./course.html">
-                        <img src="logo.jpeg" alt="logo"></a>
-                </div>
-                <div id="middleNav">
-                    <div class="navTextBox">
-                        <a href="./lectures.html" class="navText">Lectures</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="./Assignment.html" class="navText">Assignments</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Quizzes</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Tickets</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Discussion</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Notifications</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Messages</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Electives</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Announcements</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Courses</a>
-                    </div>
-                </div>
-                <div id="profile">
-                    <div id="profileClicking">
-                        <div id="userName"></div>
-                        <div id="userId"></div>
-                        <div id="dropdown">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                    </div>
-                </div>
-                <div id="dropDownList">
-                    <a href="" id="allStudentsData">Students Account</a>
-                    <a href="./profile.html">Profile</a>
-                    <a href="./index.html" id="logOut">Log Out</a>
-                </div>
-            </div>
-            <div id="navbar2">
-                <h3>Today's Schedule</h3>
-                <div id="navbar2Right">
-                    <button id="bookmark">Bookmarks</button>
-                    <button id="refer">Refer & Earn</button>
-                </div>
-            </div>
-        </div>
-        <div id="mainBody">
-            <div id="lectureBox">
-                <div id="lecture">
-                    <div id="lectureTime">
-                        <p>09:00 AM</p>
-                        <p>LECTURE</p>
-                    </div>
-                    <div id="lectureOtherDetails">
-                        <h2 id="lectureName">MORNING SCRUM 01.10.2022</h2>
-
-                        <h5>dhiraj kadam
-                            <span>Starting at
-                            </span>
-                            09:00 AM</h5>
-
-                        <div id="extraButtons">
-                            <button>General</button>
-                            <button>Live</button>
-                        </div>
-                    </div>
-                    <div id="details">
-                        <p>Details ></p>
-                    </div>
-                </div>
-                <div id="details"></div>
-            </div>
-        </div>
-    </body>
-</html>
-<script>
-    let lec = JSON.parse(localStorage.getItem("lectures")) || [];
-    let assign = JSON.parse(localStorage.getItem("assignments")) || [];
-
-    let savedLectureArray = [...lec, ...assign]
-
-    let currentName = localStorage.getItem("username");
-    let currentId = localStorage.getItem("userid");
-    let currentUser = localStorage.getItem("useraccess");
-
-    if (currentUser == "admin") {
-        document.getElementById("userName").innerText = `${currentName}`;
-        document.getElementById("userId").innerText = `(Admin_${currentId})`;
-    } else if (currentUser == "student") {
-        document.getElementById("userName").innerText = `${currentName}`;
-        document.getElementById("userId").innerText = `(pw07_00${currentId})`;
-        document.getElementById("allStudentsData").style.display = "none";
-    }
-
-    displayLectures = (lectureArray) => {
-        lectureBox.innerHTML = ""
-        lectureArray.map((elem) => {
-            lectureBox.innerHTML += `<div id="lecture">
-                    <div id="lectureTime">
-                        <p>${
-                elem.time
-            }</p>
-                        <p>LECTURE</p>
-                    </div>
-                    <div id="lectureOtherDetails">
-                        <h2 id="lectureName">${
-                elem.name
-            } ${
-                elem.date
-            }</h2>
-
-                        <span><strong>dhiraj kadam</strong>
-                            Starting at
-                            <strong>${
-                elem.time
-            }</strong></span>
-
-                        <div id="extraButtons">
-                            <button>General</button>
-                            <button>Live</button>
-                        </div>
-                    </div>
-                    <div id="details">
-                        <p>Details ></p>
-                    </div>
-                </div>
-                <div id="details"></div>`
-        })
-    }
-    let showDD = true;
-    showDropDown = () => {
-        if (showDD) {
-            document.getElementById("dropDownList").style.display = "flex"
-            showDD = false;
-            console.log(showDD);
-        } else {
-            document.getElementById("dropDownList").style.display = "none"
-            showDD = true;
-            console.log(showDD);
         }
-    }
-    logOut = () => {
-        localStorage.removeItem("username")
-        localStorage.removeItem("userid")
-        localStorage.removeItem("useraccess")
-    }
+    </style>
+</head>
+<body>
+    <div id="mainNavbar">
+        <div id="navbar">
+            <div id="Logo">
+                <a href="./course.html">
+                    <img src="logo.jpeg" alt="logo"></a>
+            </div>
+            <div id="middleNav">
+                <div class="navTextBox">
+                    <a href="./lectures.html" class="navText">Lectures</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="./Assignment.html" class="navText">Assignments</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Quizzes</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Tickets</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Discussion</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Notifications</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Messages</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Electives</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Announcements</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">More</a>
+                </div>
+            </div>
+            <div id="profile">
+                <div id="profileClicking">
+                    <p id="userName">Jonathan Doe</p>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+        <div id="navbar2">
+            <h3>Course Name</h3>
+            <div id="navbar2Right">
+                <button>Join Live</button>
+                <button>Watch Recording</button>
+            </div>
+        </div>
+    </div>
 
-    document.getElementById("logOut").addEventListener("click", logOut);
-    document.getElementById("profileClicking").addEventListener("click", showDropDown);
-    displayLectures(savedLectureArray);
-</script>
+    <div id="mainBody">
+        <div id="lectureBox">
+            <div id="lecture">
+                <div id="lectureTime">
+                    <span>LIVE</span>
+                    <span>12:00 PM</span>
+                    <span>30/01/2023</span>
+                </div>
+                <div id="lectureName">
+                    <span>Introduction to AI</span>
+                </div>
+                <div id="lectureOtherDetails">
+                    <div id="extraButtons">
+                        <button>See Recording</button>
+                        <button>See Notes</button>
+                    </div>
+                    <div id="details">
+                        This lecture covers the basics of Artificial Intelligence and its applications.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,177 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sign Up</title>
-        <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
-        <style>
-            * {
-                font-family: 'Hind Siliguri', sans-serif;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Hind Siliguri', sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f3f4f6;
+            padding: 20px;
+        }
+        #form {
+            width: 100%;
+            max-width: 400px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0 4px 16px, rgba(17, 17, 26, 0.05) 0 8px 32px;
+            margin: auto;
+            border-radius: 15px;
+            background-color: white;
+            padding: 20px;
+        }
+        h3 {
+            padding-top: 10px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            font-size: 14px;
+        }
+        form {
+            width: 100%;
+        }
+        #submit {
+            border: none;
+            background-color: #e8eaed;
+            height: 47px;
+            margin: 20px 0;
+            color: #afb2b8;
+            cursor: pointer;
+        }
+        #submit:hover {
+            background-color: #2563EB;
+            color: white;
+        }
+        h5 {
+            width: 92%;
+            margin: 20px auto;
+            color: #6b7280;
+            text-align: center;
+        }
+        #signText {
+            text-align: center;
+            color: #6b7280;
+            padding-bottom: 10px;
+        }
+        #bottom {
+            text-align: center;
+            margin-top: 20px;
+            color: #6b7280;
+        }
+        span {
+            color: #2563eb;
+        }
+        #eye {
+            position: absolute;
+            top: 12px;
+            right: 10px;
+            color: #969595;
+            cursor: pointer;
+        }
+        form > div {
+            position: relative;
+            width: 100%;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        a {
+            text-decoration: none;
+        }
+        @media (max-width: 480px) {
             #form {
-                width: 34%;
-                box-shadow: rgba(17, 17, 26, 0.1) 0 4px 16px, rgba(17, 17, 26, 0.05) 0 8px 32px;
-                margin: auto;
-                border-radius: 15px;
+                padding: 15px;
             }
             h3 {
-                padding-top: 30px;
-                text-align: center;
+                font-size: 1.5em;
             }
-            input {
-                width: 100%;
-                height: 40px;
-                margin-bottom: 4px;
-                /* margin-top: -10px; */
-                padding-left: 15px;
-                border-radius: 6px;
-                border: 1px solid #d1d5db;
-                font-size: 14px;
-            }
-            form {
-                width: 86%;
-                margin: auto;
-            }
-            #submit {
-                border: none;
-                background-color: #e8eaed;
-                height: 47px;
-                margin: 40px 0 20px;
-                color: #afb2b8;
-            }
-            #submit:hover {
-                background-color: #2563EB;
-                color: white;
-                cursor: pointer;
-            }
-            h5 {
-                width: 92%;
-                margin: 30px auto auto;
-                color: #6b7280;
-                text-align: center;
-            }
-            #signText {
-                text-align: center;
-                color: #6b7280;
-                padding-bottom: 30px;
-            }
-            #bottom {
-                text-align: center;
-                margin: -10px;
-                color: #6b7280;
-            }
-            span {
-                color: #2563eb;
-            }
-            #eye {
-                position: absolute;
-                top: 15px;
-                right: 10px;
-                color: #969595;
-            }
-            form > div {
-                position: relative;
-                width: 100%;
-                display: flex;
-                margin-bottom: 15px;
-            }
-            a {
-                text-decoration: none;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="form">
-            <h3>Sign Up</h3>
-            <form>
-                <label>Full name</label>
-                <div>
-                    <input id="name" type="text" required="" placeholder="Enter your full name">
-                </div>
-                <label>Email</label>
-                <div>
-                    <input id="email" type="email" required="" placeholder="Enter email">
-                </div>
-                <label>Password</label>
-                <div id="passwordBox">
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-                    <input type="password" placeholder="Enter Password" name="password" autocomplete="current-password" required="" id="password">
-                    <i class="far fa-eye" id="eye"></i>
-                </div>
-                <h5>By signing up, I accept the Neet
-                    <span>
-                        <u>Terms and Service</u>
-                    </span>
-                    and acknowledge the
-                    <span>
-                        <u>Privacy Policy</u>
-                    </span>
-                </h5>
-                <input id="submit" type="submit" value="Sign Up">
-                <p id="signText">Already have an account?
-                    <a href="./User-login.html">
-                        <span>Sign In</span>
-                    </a>
-                </p>
-            </form>
-        </div>
-        <p id="bottom">© 2024 by Neet Privacy Policy & Terms and Conditions</p>
-    </body>
-</html>
-<script>
-    document.querySelector("form").addEventListener("submit", signup);
-
-    var getStr = localStorage.getItem("allUser");
-    var loginArray = JSON.parse(getStr) || [];
-
-    function signup() {
-        event.preventDefault();
-        console.log("gfsdgsdfd")
-        var name = document.getElementById("name").value;
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-        if(loginArray == ""){
-            var id = 0;
         }
+    </style>
+</head>
+<body>
+    <div id="form">
+        <h3>Sign Up</h3>
+        <form>
+            <label>Full name</label>
+            <div>
+                <input id="name" type="text" required placeholder="Enter your full name">
+            </div>
+            <label>Email</label>
+            <div>
+                <input id="email" type="email" required placeholder="Enter email">
+            </div>
+            <label>Password</label>
+            <div id="passwordBox">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+                <input type="password" placeholder="Enter Password" name="password" autocomplete="current-password" required id="password">
+                <i class="far fa-eye" id="eye"></i>
+            </div>
+            <h5>By signing up, I accept the Neet
+                <span>
+                    <u>Terms and Service</u>
+                </span>
+                and acknowledge the
+                <span>
+                    <u>Privacy Policy</u>
+                </span>
+            </h5>
+            <input id="submit" type="submit" value="Sign Up">
+            <p id="signText">Already have an account?
+                <a href="./User-login.html">
+                    <span>Sign In</span>
+                </a>
+            </p>
+        </form>
+    </div>
+    <p id="bottom">© 2024 by Neet Privacy Policy & Terms and Conditions</p>
 
-        flag = true;
-        if (name == "" || email == "" || password == "") {
-            alert("Kindly fill all the details")
-        } else if (password.length < 8) {
-            alert("Password should be atleast 8 characters");
-        } else {
-            loginArray.map((elem) => {
+    <script>
+        document.querySelector("form").addEventListener("submit", signup);
+
+        var getStr = localStorage.getItem("allUser");
+        var loginArray = JSON.parse(getStr) || [];
+
+        function signup(event) {
+            event.preventDefault();
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            let id = 0;
+            let flag = true;
+
+            if (name === "" || email === "" || password === "") {
+                alert("Kindly fill all the details");
+                return;
+            } else if (password.length < 8) {
+                alert("Password should be at least 8 characters");
+                return;
+            }
+
+            loginArray.forEach(elem => {
                 id = elem.id;
-                if (elem.email == email) {
-                    alert(`This email ${email} is already have been registered`)
+                if (elem.email === email) {
+                    alert(`This email ${email} is already registered`);
                     flag = false;
                 }
-            })
-            if (flag == true) {
+            });
+
+            if (flag) {
                 id++;
                 var newUser = {
                     id: id,
                     name: name,
                     email: email,
                     password: password
-                }
+                };
                 loginArray.push(newUser);
 
                 var setStr = JSON.stringify(loginArray);
                 localStorage.setItem("allUser", setStr);
-                alert("Student Account Created")
-                window.location.href="./User-login.html";
+                alert("Student Account Created");
+                window.location.href = "./User-login.html";
             }
         }
-    }
-    var eye = document.querySelector('#eye');
-    var pass = document.querySelector('#password');
 
-    eye.addEventListener('click', function (e) {
-        var type = pass.getAttribute('type') === 'password' ? 'text' : 'password';
-        pass.setAttribute('type', type);
-        this.classList.toggle('fa-eye-slash');
-    });
-</script>
+        var eye = document.querySelector('#eye');
+        var pass = document.querySelector('#password');
+
+        eye.addEventListener('click', function () {
+            var type = pass.getAttribute('type') === 'password' ? 'text' : 'password';
+            pass.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+</body>
+</html>

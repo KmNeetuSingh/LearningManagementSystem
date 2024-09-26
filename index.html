@@ -24,16 +24,17 @@
             align-items: center;
             height: 80px;
             padding: 0 30px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         #textBox {
-            margin-left:150px;
             width: 79%;
-            height: 58px;
+            margin-left: 80px;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
+            flex-wrap: wrap;
+            gap:30px;
         }
 
         #logo img {
@@ -44,8 +45,8 @@
         #textBox a {
             text-decoration: none;
             color: black;
-            font-size: 14px;
-            transition: color 0.3s; /* Smooth transition for hover effect */
+            font-size: 20px;
+            transition: color 0.3s;
         }
 
         #textBox a:hover {
@@ -66,7 +67,7 @@
             color: #5458ca;
             font-weight: bold;
             letter-spacing: 0.1px;
-            transition: background-color 0.3s; /* Smooth background transition */
+            transition: background-color 0.3s;
         }
 
         #button2 {
@@ -80,7 +81,7 @@
             align-items: center;
             background-color: white;
             font-size: 13px;
-            transition: background-color 0.3s; /* Smooth background transition */
+            transition: background-color 0.3s;
         }
 
         #button1:hover {
@@ -113,13 +114,10 @@
             font-family: 'Secular One', sans-serif;
         }
 
-    
-
         #homeBody > h2 {
             line-height: 30px;
             font-size: 30px;
         }
-
 
         #homeBody > button {
             background-color: #E20F31;
@@ -133,7 +131,7 @@
             color: white;
             text-transform: uppercase;
             font-family: 'Open Sans', sans-serif;
-            transition: background-color 0.3s; 
+            transition: background-color 0.3s;
         }
 
         #homeBody > button:hover {
@@ -161,7 +159,7 @@
             height: 200px;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for modal */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         #middleFixModal button {
@@ -172,7 +170,7 @@
             height: 50px;
             border: none;
             border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         #middleFixModal button:hover {
@@ -182,13 +180,61 @@
 
         #closeMark {
             font-size: 30px;
-            color: crimson; /* Icon color */
+            color: crimson;
         }
 
         #closeMark:hover {
             cursor: pointer;
             border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.3); /* Subtle hover effect */
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            #parentBox {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 20px; 
+            }
+
+            #textBox {
+                justify-content: center;
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            #homeBody > h1 {
+                font-size: 40px; 
+                margin: 20px 0;
+            }
+
+            #homeBody > h2 {
+                font-size: 20px; 
+            }
+
+            #homeBody > button {
+                width: 80%; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            #button1, #button2 {
+                width: 100%; 
+                margin: 5px 0; 
+            }
+
+            #homeBody > h1 {
+                font-size: 32px; 
+            }
+
+            #homeBody > h2 {
+                font-size: 18px; 
+            }
+
+            #middleFixModal {
+                width: 80%; 
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -198,7 +244,7 @@
         <div id="parentBox">
             <div id="textBox">
                 <div><a href="#">COURSES</a></div>
-                <div><a href="#">SUCESSFUL STORIES</a></div>
+                <div><a href="#">SUCCESSFUL STORIES</a></div>
                 <div><a href="#">EVENTS</a></div>
                 <div><a href="#">FEES & ISA</a></div>
                 <div><a href="#">FAQ</a></div>
@@ -212,7 +258,7 @@
             <h1>Driven by Outcomes,</h1>
             <h1>Fuelled by Ambitions.</h1>
             <h2>Learning-Management-Platform</h2>
-            <button>signup to explore more...</button>
+            <button>Signup to explore more...</button>
         </div>
     </div>
     <div id="fixedModal">

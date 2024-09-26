@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -243,7 +243,6 @@
                 width: 160px;
                 top: 50px;
                 background-color: white;
-                /* display: flex; */
                 flex-direction: column;
                 justify-content: space-between;
                 border-radius: 5px;
@@ -298,193 +297,29 @@
                     <div class="navTextBox">
                         <a href="" class="navText">Electives</a>
                     </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Announcements</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Courses</a>
-                    </div>
-                </div>
-                <div id="profile">
-                    <div id="profileClicking">
-                        <div id="userName"></div>
-                        <div id="userId"></div>
-                        <div id="dropdown">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                    </div>
-                </div>
-                <div id="dropDownList">
-                    <a href="" id="allStudentsData">Students Account</a>
-                    <a href="./profile.html">Profile</a>
-                    <a href="./index.html" id="logOut">Log Out</a>
                 </div>
             </div>
             <div id="navbar2">
-                <h3>Lectures</h3>
+                <h3>Course Title</h3>
             </div>
         </div>
         <div id="mainBody">
-            <form action="" id="lectureForm">
-                <select name="" id="lecturesTest" required>
-                    <option value="">--Select--</option>
-                    <option value="Coding">Coding</option>
-                    <option value="DSA">DSA</option>
-                    <option value="CSBT">CSBT</option>
-                    <option value="General">General</option>
-                </select>
-                <input type="text" id="lecturesName" placeholder="Enter Name of Lecture" required>
-                <input type="date" id="lecturesDate" placeholder="Enter Date of Lecture" required>
-                <input type="time" id="lecturesTime" placeholder="Enter Time of Lecture" required>
-                <input type="submit" id="lecturesSubmit" placeholder="Enter Time of Lecture">
+            <form id="lectureForm">
+                <input type="text" id="lecturesName" placeholder="Lecture Name">
+                <input type="text" id="lecturesTest" placeholder="Lecture Test">
+                <input type="date" id="lecturesDate">
+                <input type="time" id="lecturesTime">
+                <input type="submit" id="lecturesSubmit" value="Submit">
             </form>
-            <button id="editDetails">Edit</button>
             <div id="allLecturesBox">
                 <div id="allLectures">
                     <div>
-                        <p id="savedLectureName">IA-PSC</p>
-                        <button id="live">
-                            <a href="">Live</a>
-                        </button>
+                        <div id="savedLectureName">Lecture 1</div>
+                        <div id="lectureDetails">Details about Lecture 1</div>
+                        <button id="live"><a href="#">Live</a></button>
                     </div>
-                    <h6 id="lectureDetails">Rampukar Yadav
-                        <span>Scheduled</span>
-                        Coding
-                        <span>
-                            at 1 Oct, 22 - 3:00 pm</span>
-                    </h6>
                 </div>
             </div>
         </div>
     </body>
 </html>
-<script>
-
-    function objCreator(n, te, d, ti) {
-        this.name = n,
-        this.test = te,
-        this.date = d,
-        this.time = ti
-    }
-
-    let savedLectureArray = JSON.parse(localStorage.getItem("lectures")) || [];
-
-    let currentName = localStorage.getItem("username");
-    let currentId = localStorage.getItem("userid");
-    let currentUser = localStorage.getItem("useraccess");
-
-    if (currentUser == "admin") {
-        document.getElementById("userName").innerText = `${currentName}`;
-        document.getElementById("userId").innerText = `(Admin_${currentId})`;
-    } else if (currentUser == "student") {
-        document.getElementById("userName").innerText = `${currentName}`;
-        document.getElementById("userId").innerText = `(pw07_00${currentId})`;
-        document.getElementById("editDetails").style.display = "none";
-        document.getElementById("allStudentsData").style.display = "none";
-        document.getElementById("lectureForm").style.display = "none";
-    }
-
-    addLecture = () => {
-        event.preventDefault()
-        let lectureName = document.getElementById("lecturesName").value;
-        let lecturesTest = document.getElementById("lecturesTest").value;
-        let lectureDate = document.getElementById("lecturesDate").value;
-        let lectureTime = document.getElementById("lecturesTime").value;
-
-        let newObj = new objCreator(lectureName, lecturesTest, lectureDate, lectureTime);
-        savedLectureArray.push(newObj);
-
-        localStorage.setItem("lectures", JSON.stringify(savedLectureArray));
-        displayLectures(savedLectureArray);
-        alert("Lecture added");
-        // document.getElementById("lecturesName").value = "";
-        // document.getElementById("lecturesTest").value = "";
-        // document.getElementById("lecturesDate").value = "";
-        // document.getElementById("lecturesTime").value = "";
-    }
-    let flag = true;
-    var CMid = "closeMark";
-    showCloseMark = () => {
-        if (allLecturesBox.innerHTML != "") {
-            if (flag) {
-                CMid = "closeMarkDone";
-                let allCloseMarks = document.querySelectorAll("#closeMark");
-                for (let i = 0; i < savedLectureArray.length; i++) {
-                    allCloseMarks[i].id = CMid
-                }
-                document.getElementById("editDetails").innerText = "Done";
-                document.getElementById("editDetails").id = "editDetailsDone"
-                flag = false;
-            } else {
-                CMid = "closeMark";
-                let allCloseMarks = document.querySelectorAll("#closeMarkDone");
-                for (let i = 0; i < savedLectureArray.length; i++) {
-                    allCloseMarks[i].id = CMid
-                }
-                document.getElementById("editDetailsDone").innerText = "Edit";
-                document.getElementById("editDetailsDone").id = "editDetails"
-                flag = true;
-            }
-        } else {
-            document.getElementById("editDetailsDone").innerText = "Edit";
-            document.getElementById("editDetailsDone").id = "editDetails"
-        }
-    }
-
-    deleteLecture = (i) => {
-        savedLectureArray.splice(i, 1);
-        localStorage.setItem("lectures", JSON.stringify(savedLectureArray));
-        displayLectures(savedLectureArray);
-    }
-
-    displayLectures = (lectureArray) => {
-        allLecturesBox.innerHTML = ""
-        lectureArray.map((elem, index) => {
-            allLecturesBox.innerHTML += `<i class="fa-regular fa-circle-xmark" id="${CMid}" onclick="deleteLecture('${index}')"></i>
-            <div id="allLectures">
-                    <div>
-                        <p id="savedLectureName">${
-                elem.name
-            } ${
-                elem.date
-            }</p>
-                        <button id="live">
-                            <a href="">Live</a>
-                        </button>
-                    </div>
-                    <span id="lectureDetails"><strong>Rampukar Yadav</strong> Scheduled <strong>${
-                elem.test
-            }</strong> at ${
-                elem.date
-            } - ${
-                elem.time
-            }</span></div>`
-        })
-    }
-
-
-    let showDD = true;
-    showDropDown = () => {
-        if (showDD) {
-            document.getElementById("dropDownList").style.display = "flex"
-            showDD = false;
-            console.log(showDD);
-        } else {
-            document.getElementById("dropDownList").style.display = "none"
-            showDD = true;
-            console.log(showDD);
-        }
-    }
-    logOut = () => {
-        localStorage.removeItem("username")
-        localStorage.removeItem("userid")
-        localStorage.removeItem("useraccess")
-    }
-
-    document.getElementById("logOut").addEventListener("click", logOut);
-    document.getElementById("profileClicking").addEventListener("click", showDropDown);
-
-    displayLectures(savedLectureArray);
-    document.getElementById("editDetails").addEventListener("click", showCloseMark);
-    document.getElementById("lectureForm").addEventListener("submit", addLecture);
-</script>
