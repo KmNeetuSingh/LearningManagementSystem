@@ -24,7 +24,7 @@
         }
         #navbar {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 11% 67% 22%;
             height: 60px;
             border-bottom: 1px solid #eff0f2;
         }
@@ -40,15 +40,20 @@
             width: 100%;
         }
         #middleNav {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap; /* Added for responsiveness */
         }
         #middleNav a {
             text-decoration: none;
             font-size: 13px;
             color: #747680;
             margin: auto;
+        }
+        #middleNav div {
+            line-height: 52px;
         }
         #navbar2 {
             height: 65px;
@@ -72,7 +77,12 @@
             gap: 15px;
             border-radius: 5px;
         }
-        input, select {
+        #lecturesType,
+        #lecturesTest,
+        #lecturesName,
+        #lecturesDate,
+        #lecturesTime,
+        #lecturesSubmit {
             padding-left: 7px;
             border-radius: 5px;
             height: 40px;
@@ -84,8 +94,6 @@
             color: black;
             font-weight: bold;
             font-size: 20px;
-            height: 40px;
-            border: 2px solid rgb(187, 187, 187);
         }
         #lecturesSubmit:hover {
             color: white;
@@ -100,8 +108,10 @@
         #allLectures {
             padding: 20px;
             border-bottom: 1px solid #e5e7eb;
+        }
+        #allLectures > div {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Ensure spacing is responsive */
             align-items: center;
         }
         #savedLectureName {
@@ -111,6 +121,7 @@
         #live {
             text-transform: uppercase;
             font-size: 12px;
+            margin: 5px;
             background-color: #4B5563;
             font-family: 'Inter Tight', sans-serif;
             padding: 0 4px;
@@ -118,12 +129,17 @@
             height: 17px;
             border-radius: 4px;
         }
+        #live > a {
+            text-decoration: none;
+            color: white;
+        }
         #lectureDetails {
             line-height: 21px;
             font-size: 12px;
             word-spacing: 2px;
         }
-        #editDetails, #editDetailsDone {
+        #editDetails,
+        #editDetailsDone {
             width: 70px;
             height: 30px;
             font-size: 17px;
@@ -132,11 +148,27 @@
             border: 2px solid gray;
             background-color: rgb(231, 231, 231);
             margin: 15px;
+            float: right;
             transition: transform 300ms;
         }
-        #editDetails:hover, #editDetailsDone:hover {
+        #editDetails:hover,
+        #editDetailsDone:hover {
             cursor: pointer;
             transform: scale(1.05);
+        }
+        #closeMark,
+        #closeMarkDone {
+            float: right;
+            font-size: 22px;
+            border-radius: 50%;
+            transition: transform 150ms;
+            display: none;
+        }
+        #closeMark:hover,
+        #closeMarkDone:hover {
+            background-color: rgba(0, 0, 0, 0.356);
+            transform: scale(1.1);
+            cursor: pointer;
         }
         #profile {
             color: #747680;
@@ -147,8 +179,16 @@
             letter-spacing: 0.4px;
         }
         #profileClicking {
+            gap: 5px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
+        }
+        #profileClicking:hover {
+            cursor: pointer;
+        }
+        #userName {
+            text-transform: uppercase;
         }
         #dropdown {
             font-size: 10px;
@@ -162,9 +202,10 @@
             top: 50px;
             background-color: white;
             flex-direction: column;
+            justify-content: space-between;
             border-radius: 5px;
-            display: none;
             box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+            display: none;
         }
         #dropDownList a {
             font-size: 13px;
@@ -180,40 +221,35 @@
             border-top: 1px solid #e0e1e4;
         }
 
-        /* Media Queries for Responsiveness */
+        /* Media Queries for Responsive Design */
         @media (max-width: 768px) {
             #navbar {
-                grid-template-columns: 1fr;
-                height: auto;
+                grid-template-columns: 1fr 1fr 1fr; /* Stacking elements for smaller screens */
             }
             #middleNav {
-                flex-direction: column;
+                flex-direction: column; /* Stack navbar items vertically */
                 align-items: flex-start;
             }
             #mainBody {
-                margin: 20px 10px;
+                margin: 20px; /* Adjust margins for smaller screens */
+            }
+            #navbar2 {
+                padding: 10px;
             }
             #lectureForm {
-                width: 100%;
-            }
-            input, select, #lecturesSubmit {
-                width: 100%;
-            }
-            #allLectures {
-                flex-direction: column;
-                align-items: flex-start;
+                width: 100%; /* Full width for smaller screens */
             }
         }
 
         @media (max-width: 480px) {
-            #navbar2 > h3 {
-                font-size: 16px;
+            #middleNav a {
+                font-size: 12px; /* Smaller font size for mobile */
+            }
+            #lecturesSubmit {
+                font-size: 18px; /* Adjust button font size */
             }
             #savedLectureName {
-                font-size: 18px;
-            }
-            #lectureDetails {
-                font-size: 10px;
+                font-size: 18px; /* Adjust saved lecture name size */
             }
         }
     </style>
@@ -226,82 +262,80 @@
                     <img src="https://sso.masaischool.com/brand_dark.svg" alt="Masai logo"></a>
             </div>
             <div id="middleNav">
-                <a href="./lectures.html" class="navText">Lectures</a>
-                <a href="./Assignment.html" class="navText">Assignments</a>
-                <a href="" class="navText">Quizzes</a>
-                <a href="" class="navText">Tickets</a>
-                <a href="" class="navText">Discussion</a>
-                <a href="" class="navText">Notifications</a>
-                <a href="" class="navText">Messages</a>
-                <a href="" class="navText">Electives</a>
-                <a href="" class="navText">Announcements</a>
-                <a href="" class="navText">Courses</a>
+                <div class="navTextBox">
+                    <a href="./lectures.html" class="navText">Lectures</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="./Assignment.html" class="navText">Assignments</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Quizzes</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Tickets</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Projects</a>
+                </div>
             </div>
             <div id="profile">
                 <div id="profileClicking">
-                    <div id="userName"></div>
-                    <div id="userId"></div>
-                    <div id="dropdown">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </div>
+                    <div id="userName">Student Name</div>
+                    <i class="fas fa-user-circle"></i>
                 </div>
+                <div id="dropdown">▼</div>
             </div>
             <div id="dropDownList">
-                <a href="" id="allStudentsData">Students Account</a>
-                <a href="./profile.html">Profile</a>
-                <a href="./index.html" id="logOut">Log Out</a>
+                <a href="">Profile</a>
+                <a href="">Settings</a>
+                <div id="logOut"><a href="">Log out</a></div>
             </div>
         </div>
-        <div id="navbar2">
-            <h3>Assignments</h3>
-        </div>
+    </div>
+    <div id="navbar2">
+        <h3>Lectures</h3>
     </div>
     <div id="mainBody">
-        <form action="" id="lectureForm">
-            <select name="" id="lecturesTest" required>
-                <option value="">--Select test--</option>
-                <option value="Assignment">Assignment</option>
-                <option value="Evaluation">Evaluation</option>
-            </select>
-            <select name="" id="lecturesType" required>
-                <option value="">--Select Type--</option>
-                <option value="Live">Live</option>
-                <option value="Recorded">Recorded</option>
-            </select>
-            <input type="date" id="dateLecture" required />
-            <input type="time" id="timeLecture" required />
-            <input type="text" id="durationLecture" placeholder="Duration" required />
-            <button id="lecturesSubmit">Create Lecture</button>
-        </form>
+        <div id="lectureForm">
+            <input id="lecturesType" placeholder="Lecture Type" />
+            <input id="lecturesTest" placeholder="Lecture Test" />
+            <input id="lecturesName" placeholder="Lecture Name" />
+            <input id="lecturesDate" type="date" placeholder="Date" />
+            <input id="lecturesTime" type="time" placeholder="Time" />
+            <button id="lecturesSubmit">Submit</button>
+        </div>
         <div id="allLecturesBox">
             <div id="allLectures">
-                <div id="savedLectureName">Lecture 1</div>
                 <div>
-                    <button id="editDetails">Edit</button>
-                    <button id="editDetailsDone">Done</button>
+                    <span id="savedLectureName">Lecture 1</span>
+                    <div>
+                        <button id="editDetails">Edit</button>
+                        <button id="closeMark">✖</button>
+                    </div>
                 </div>
+                <div id="lectureDetails">Details about the lecture go here...</div>
             </div>
-            <div id="lectureDetails">
-                Type: Recorded | Date: 2024-10-01 | Time: 10:00 AM | Duration: 1 hour
+            <div id="allLectures">
+                <div>
+                    <span id="savedLectureName">Lecture 2</span>
+                    <div>
+                        <button id="editDetails">Edit</button>
+                        <button id="closeMark">✖</button>
+                    </div>
+                </div>
+                <div id="lectureDetails">Details about the lecture go here...</div>
+            </div>
+            <div id="allLectures">
+                <div>
+                    <span id="savedLectureName">Lecture 3</span>
+                    <div>
+                        <button id="editDetails">Edit</button>
+                        <button id="closeMark">✖</button>
+                    </div>
+                </div>
+                <div id="lectureDetails">Details about the lecture go here...</div>
             </div>
         </div>
     </div>
-    <script>
-        let dropDownOpen = false;
-
-        function profileClick() {
-            dropDownOpen = !dropDownOpen;
-            document.getElementById("dropDownList").style.display = dropDownOpen ? "flex" : "none";
-        }
-        document.getElementById("profileClicking").onclick = profileClick;
-
-        function hideDropdown(event) {
-            if (!event.target.closest("#profileClicking")) {
-                dropDownOpen = false;
-                document.getElementById("dropDownList").style.display = "none";
-            }
-        }
-        document.addEventListener("click", hideDropdown);
-    </script>
 </body>
 </html>

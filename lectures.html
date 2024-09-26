@@ -1,325 +1,660 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Course</title>
-        <script src="https://kit.fontawesome.com/25408e8f65.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Archivo', sans-serif;
-            }
-            body {
-                background-color: #f3f4f6;
-            }
-            #mainNavbar {
-                background-color: #ffffff;
-                box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(30, 30, 30, 0.000000001) 0 0 0 1px;
-            }
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course</title>
+    <script src="https://kit.fontawesome.com/25408e8f65.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Archivo', sans-serif;
+        }
+
+        body {
+            background-color: #f3f4f6;
+        }
+
+        #mainNavbar {
+            background-color: #ffffff;
+            box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(30, 30, 30, 0.000000001) 0 0 0 1px;
+        }
+
+        #navbar {
+            display: grid;
+            grid-template-columns: 11% 67% 22%;
+            height: 60px;
+            border-bottom: 1px solid #eff0f2;
+        }
+
+        #Logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #Logo a {
+            width: 53%;
+        }
+
+        #Logo img {
+            width: 100%;
+        }
+
+        #middleNav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #middleNav a {
+            text-decoration: none;
+            font-size: 13px;
+            color: #747680;
+            margin: auto;
+        }
+
+        #middleNav div {
+            line-height: 52px;
+        }
+
+        #navbar2 {
+            height: 65px;
+            padding: 22px 60px;
+        }
+
+        #navbar2>h3 {
+            font-size: 18px;
+            color: #1f2937;
+            letter-spacing: 1px;
+        }
+
+        #mainBody {
+            margin: 40px 60px;
+            background-color: #F9FAFB;
+        }
+
+        #lectureForm {
+            padding: 30px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            border-radius: 5px;
+        }
+
+        #lecturesTest {
+            padding-left: 7px;
+            border-radius: 5px;
+            height: 40px;
+            width: 90%;
+            border: 2px solid rgb(187, 187, 187);
+        }
+
+        #lecturesName {
+            padding-left: 7px;
+            border-radius: 5px;
+            height: 40px;
+            width: 90%;
+            border: 2px solid rgb(187, 187, 187);
+        }
+
+        #lecturesDate {
+            padding-left: 7px;
+            border-radius: 5px;
+            height: 40px;
+            width: 90%;
+            border: 2px solid rgb(187, 187, 187);
+        }
+
+        #lecturesTime {
+            padding-left: 7px;
+            border-radius: 5px;
+            height: 40px;
+            width: 90%;
+            border: 2px solid rgb(187, 187, 187);
+        }
+
+        #lecturesSubmit {
+            background-color: rgb(190, 190, 190);
+            color: black;
+            font-weight: bold;
+            font-size: 20px;
+            padding-left: 7px;
+            border-radius: 5px;
+            height: 40px;
+            width: 90%;
+            border: 2px solid rgb(187, 187, 187);
+        }
+
+        #lecturesSubmit:hover {
+            color: white;
+            border: none;
+            background-color: #2563EB;
+        }
+
+        #allLecturesBox {
+            margin-top: 60px;
+            background-color: white;
+            border-top: 2px solid #E5E7EB;
+        }
+
+        #allLectures {
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        #allLectures>div {
+            display: flex;
+        }
+
+        #savedLectureName {
+            font-size: 21px;
+            color: #5A46E5;
+        }
+
+        #live {
+            margin: 5px;
+            background-color: #16a34a;
+            border: none;
+            width: 35px;
+            height: 17px;
+            border-radius: 4px;
+        }
+
+        #live>a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #lectureDetails {
+            line-height: 21px;
+            font-size: 12px;
+            word-spacing: 2px;
+        }
+
+        #editDetails {
+            width: 70px;
+            height: 30px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 6px;
+            border: 2px solid gray;
+            background-color: rgb(231, 231, 231);
+            margin: 15px;
+            float: right;
+            transition: transform 300ms;
+        }
+
+        #editDetails:hover {
+            background-color: rgb(255, 133, 133);
+            border: 2px solid crimson;
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+
+        #editDetailsDone {
+            width: 70px;
+            height: 30px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 6px;
+            border: 2px solid gray;
+            background-color: rgb(231, 231, 231);
+            margin: 15px;
+            float: right;
+            transition: transform 300ms;
+        }
+
+        #editDetailsDone:hover {
+            background-color: rgb(163, 209, 255);
+            border: 2px solid dodgerblue;
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+
+        #closeMark {
+            float: right;
+            font-size: 22px;
+            border-radius: 50%;
+            transition: transform 150ms;
+            display: none;
+        }
+
+        #closeMark:hover {
+            background-color: rgba(0, 0, 0, 0.356);
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        #closeMarkDone {
+            float: right;
+            font-size: 22px;
+            border-radius: 50%;
+            transition: transform 150ms;
+            display: block;
+        }
+
+        #closeMarkDone:hover {
+            background-color: rgba(0, 0, 0, 0.356);
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        #profile {
+            color: #747680;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 13px;
+            letter-spacing: 0.4px;
+        }
+
+        #profileClicking {
+            gap: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #profileClicking:hover {
+            cursor: pointer;
+        }
+
+        #userName {
+            text-transform: uppercase;
+        }
+
+        #dropdown {
+            font-size: 10px;
+            color: #4f5158;
+        }
+
+        #dropDownList {
+            border: 1px solid #dedfe0;
+            position: absolute;
+            right: 35px;
+            width: 160px;
+            top: 50px;
+            background-color: white;
+            /* display: flex; */
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+            display: none;
+        }
+
+        #dropDownList a {
+            font-size: 13px;
+            text-decoration: none;
+            color: #494a50;
+            line-height: 35px;
+            padding: 0 12px;
+        }
+
+        #dropDownList a:hover {
+            background-color: #eeeef0;
+        }
+
+        #logOut {
+            border-top: 1px solid #e0e1e4;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Media Queries */
+        @media (max-width: 1200px) {
             #navbar {
-                display: grid;
-                grid-template-columns: 11% 67% 22%;
-                height: 60px;
-                border-bottom: 1px solid #eff0f2;
-            }
-            #Logo {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            #Logo a {
-                width: 53%;
-            }
-            #Logo img {
-                width: 100%;
-            }
-            #middleNav {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            #middleNav a {
-                text-decoration: none;
-                font-size: 13px;
-                color: #747680;
-                margin: auto;
-            }
-            #middleNav div {
-                line-height: 52px;
-            }
-            #navbar2 {
-                height: 65px;
-                padding: 22px 60px;
-            }
-            #navbar2 > h3 {
-                font-size: 18px;
-                color: #1f2937;
-                letter-spacing: 1px;
-            }
-            #mainBody {
-                margin: 40px 60px;
-                background-color: #F9FAFB;
-            }
-            #lectureForm {
-                padding: 30px;
-                background-color: white;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-                border-radius: 5px;
-            }
-            #lecturesTest {
-                padding-left: 7px;
-                border-radius: 5px;
-                height: 40px;
-                width: 90%;
-                border: 2px solid rgb(187, 187, 187);
-            }
-            #lecturesName {
-                padding-left: 7px;
-                border-radius: 5px;
-                height: 40px;
-                width: 90%;
-                border: 2px solid rgb(187, 187, 187);
-            }
-            #lecturesDate {
-                padding-left: 7px;
-                border-radius: 5px;
-                height: 40px;
-                width: 90%;
-                border: 2px solid rgb(187, 187, 187);
-            }
-            #lecturesTime {
-                padding-left: 7px;
-                border-radius: 5px;
-                height: 40px;
-                width: 90%;
-                border: 2px solid rgb(187, 187, 187);
-            }
-            #lecturesSubmit {
-                background-color: rgb(190, 190, 190);
-                color: black;
-                font-weight: bold;
-                font-size: 20px;
-                padding-left: 7px;
-                border-radius: 5px;
-                height: 40px;
-                width: 90%;
-                border: 2px solid rgb(187, 187, 187);
-            }
-            #lecturesSubmit:hover {
-                color: white;
-                border: none;
-                background-color: #2563EB;
-            }
-            #allLecturesBox {
-                margin-top: 60px;
-                background-color: white;
-                border-top: 2px solid #E5E7EB;
-            }
-            #allLectures {
-                padding: 20px;
-                border-bottom: 1px solid #e5e7eb;
-            }
-            #allLectures > div {
-                display: flex;
-            }
-            #savedLectureName {
-                font-size: 21px;
-                color: #5A46E5;
-            }
-            #live {
-                margin: 5px;
-                background-color: #16a34a;
-                border: none;
-                width: 35px;
-                height: 17px;
-                border-radius: 4px;
-            }
-            #live > a {
-                text-decoration: none;
-                color: white;
-            }
-            #lectureDetails {
-                line-height: 21px;
-                font-size: 12px;
-                word-spacing: 2px;
-            }
-            #editDetails {
-                width: 70px;
-                height: 30px;
-                font-size: 17px;
-                font-weight: 700;
-                border-radius: 6px;
-                border: 2px solid gray;
-                background-color: rgb(231, 231, 231);
-                margin: 15px;
-                float: right;
-                transition: transform 300ms;
-            }
-            #editDetails:hover {
-                background-color: rgb(255, 133, 133);
-                border: 2px solid crimson;
-                cursor: pointer;
-                transform: scale(1.05);
-            }
-            #editDetailsDone {
-                width: 70px;
-                height: 30px;
-                font-size: 17px;
-                font-weight: 700;
-                border-radius: 6px;
-                border: 2px solid gray;
-                background-color: rgb(231, 231, 231);
-                margin: 15px;
-                float: right;
-                transition: transform 300ms;
-            }
-            #editDetailsDone:hover {
-                background-color: rgb(163, 209, 255);
-                border: 2px solid dodgerblue;
-                cursor: pointer;
-                transform: scale(1.05);
-            }
-            #closeMark {
-                float: right;
-                font-size: 22px;
-                border-radius: 50%;
-                transition: transform 150ms;
-                display: none;
-            }
-            #closeMark:hover {
-                background-color: rgba(0, 0, 0, 0.356);
-                transform: scale(1.1);
-                cursor: pointer;
-            }
-            #closeMarkDone {
-                float: right;
-                font-size: 22px;
-                border-radius: 50%;
-                transition: transform 150ms;
-                display: block;
-            }
-            #closeMarkDone:hover {
-                background-color: rgba(0, 0, 0, 0.356);
-                transform: scale(1.1);
-                cursor: pointer;
-            }
-            #profile {
-                color: #747680;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 13px;
-                letter-spacing: 0.4px;
-            }
-            #profileClicking {
-                gap: 5px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            #profileClicking:hover {
-                cursor: pointer;
-            }
-            #userName {
-                text-transform: uppercase;
-            }
-            #dropdown {
-                font-size: 10px;
-                color: #4f5158;
-            }
-            #dropDownList {
-                border: 1px solid #dedfe0;
-                position: absolute;
-                right: 35px;
-                width: 160px;
-                top: 50px;
-                background-color: white;
-                flex-direction: column;
-                justify-content: space-between;
-                border-radius: 5px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-                display: none;
-            }
-            #dropDownList a {
-                font-size: 13px;
-                text-decoration: none;
-                color: #494a50;
-                line-height: 35px;
-                padding: 0 12px;
-            }
-            #dropDownList a:hover {
-                background-color: #eeeef0;
+                grid-template-columns: 15% 70% 15%;
             }
 
-            #logOut {
-                border-top: 1px solid #e0e1e4;
+            #navbar2>h3 {
+                font-size: 16px;
             }
-        </style>
-    </head>
-    <body>
-        <div id="mainNavbar">
-            <div id="navbar">
-                <div id="Logo">
-                    <a href="./course.html">
-                        <img src="https://sso.masaischool.com/brand_dark.svg" alt="Masai logo"></a>
+
+            #mainBody {
+                margin: 20px 30px;
+            }
+
+            #lectureForm input,
+            #lectureForm select {
+                width: 100%;
+            }
+
+            #lecturesSubmit {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #navbar {
+                grid-template-columns: 25% 50% 25%;
+                width:100vh;
+                height: auto;
+            }
+
+            #middleNav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #middleNav a {
+                margin: 10px 0;
+            }
+
+            #navbar2 {
+                padding: 15px 30px;
+            }
+
+            #mainBody {
+                margin: 20px 15px;
+            }
+
+            #lectureForm {
+                padding: 20px;
+                width: 100%;
+            }
+
+            #allLectures {
+                flex-direction: column;
+            }
+
+            #savedLectureName {
+                font-size: 18px;
+            }
+
+            #lectureDetails {
+                font-size: 14px;
+            }
+
+            #editDetails,
+            #editDetailsDone {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #navbar {
+                grid-template-columns: 1fr;
+            }
+
+            #middleNav {
+                display: none;
+                /* Hide middle nav on small screens */
+            }
+
+            #profile {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #userName {
+                font-size: 14px;
+            }
+
+            #dropDownList {
+                width: 100%;
+                right: 0;
+            }
+
+            #lectureForm {
+                padding: 15px;
+            }
+
+            #lecturesSubmit {
+                height: 35px;
+                font-size: 16px;
+            }
+
+            #allLectures {
+                padding: 15px;
+            }
+
+            #editDetails,
+            #editDetailsDone {
+                height: 30px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainNavbar">
+        <div id="navbar">
+            <div id="middleNav">
+                <div class="navTextBox">
+                    <a href="./lectures.html" class="navText">Lectures</a>
                 </div>
-                <div id="middleNav">
-                    <div class="navTextBox">
-                        <a href="./lectures.html" class="navText">Lectures</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="./Assignment.html" class="navText">Assignments</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Quizzes</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Tickets</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Discussion</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Notifications</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Messages</a>
-                    </div>
-                    <div class="navTextBox">
-                        <a href="" class="navText">Electives</a>
+                <div class="navTextBox">
+                    <a href="./Assignment.html" class="navText">Assignments</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Quizzes</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Tickets</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Discussion</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Notifications</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Messages</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Electives</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Announcements</a>
+                </div>
+                <div class="navTextBox">
+                    <a href="" class="navText">Courses</a>
+                </div>
+            </div>
+            <div id="profile">
+                <div id="profileClicking">
+                    <div id="userName"></div>
+                    <div id="userId"></div>
+                    <div id="dropdown">
+                        <i class="fa-solid fa-chevron-down"></i>
                     </div>
                 </div>
             </div>
-            <div id="navbar2">
-                <h3>Course Title</h3>
+            <div id="dropDownList">
+                <a href="" id="allStudentsData">Students Account</a>
+                <a href="./profile.html">Profile</a>
+                <a href="./index.html" id="logOut">Log Out</a>
             </div>
         </div>
-        <div id="mainBody">
-            <form id="lectureForm">
-                <input type="text" id="lecturesName" placeholder="Lecture Name">
-                <input type="text" id="lecturesTest" placeholder="Lecture Test">
-                <input type="date" id="lecturesDate">
-                <input type="time" id="lecturesTime">
-                <input type="submit" id="lecturesSubmit" value="Submit">
-            </form>
-            <div id="allLecturesBox">
-                <div id="allLectures">
-                    <div>
-                        <div id="savedLectureName">Lecture 1</div>
-                        <div id="lectureDetails">Details about Lecture 1</div>
-                        <button id="live"><a href="#">Live</a></button>
-                    </div>
+        <div id="navbar2">
+            <h3>Lectures</h3>
+        </div>
+    </div>
+    <div id="mainBody">
+        <form action="" id="lectureForm">
+            <select name="" id="lecturesTest" required>
+                <option value="">--Select--</option>
+                <option value="Coding">Coding</option>
+                <option value="DSA">DSA</option>
+                <option value="CSBT">CSBT</option>
+                <option value="General">General</option>
+            </select>
+            <input type="text" id="lecturesName" placeholder="Enter Name of Lecture" required>
+            <input type="date" id="lecturesDate" placeholder="Enter Date of Lecture" required>
+            <input type="time" id="lecturesTime" placeholder="Enter Time of Lecture" required>
+            <input type="submit" id="lecturesSubmit" placeholder="Enter Time of Lecture">
+        </form>
+        <button id="editDetails">Edit</button>
+        <div id="allLecturesBox">
+            <div id="allLectures">
+                <div>
+                    <p id="savedLectureName">IA-PSC</p>
+                    <button id="live">
+                        <a href="">Live</a>
+                    </button>
                 </div>
+                <h6 id="lectureDetails">Rampukar Yadav
+                    <span>Scheduled</span>
+                    Coding
+                    <span>
+                        at 1 Oct, 22 - 3:00 pm</span>
+                </h6>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
+<script>
+
+    function objCreator(n, te, d, ti) {
+        this.name = n,
+            this.test = te,
+            this.date = d,
+            this.time = ti
+    }
+
+    let savedLectureArray = JSON.parse(localStorage.getItem("lectures")) || [];
+
+    let currentName = localStorage.getItem("username");
+    let currentId = localStorage.getItem("userid");
+    let currentUser = localStorage.getItem("useraccess");
+
+    if (currentUser == "admin") {
+        document.getElementById("userName").innerText = `${currentName}`;
+        document.getElementById("userId").innerText = `(Admin_${currentId})`;
+    } else if (currentUser == "student") {
+        document.getElementById("userName").innerText = `${currentName}`;
+        document.getElementById("userId").innerText = `(pw07_00${currentId})`;
+        document.getElementById("editDetails").style.display = "none";
+        document.getElementById("allStudentsData").style.display = "none";
+        document.getElementById("lectureForm").style.display = "none";
+    }
+
+    addLecture = () => {
+        event.preventDefault()
+        let lectureName = document.getElementById("lecturesName").value;
+        let lecturesTest = document.getElementById("lecturesTest").value;
+        let lectureDate = document.getElementById("lecturesDate").value;
+        let lectureTime = document.getElementById("lecturesTime").value;
+
+        let newObj = new objCreator(lectureName, lecturesTest, lectureDate, lectureTime);
+        savedLectureArray.push(newObj);
+
+        localStorage.setItem("lectures", JSON.stringify(savedLectureArray));
+        displayLectures(savedLectureArray);
+        alert("Lecture added");
+        // document.getElementById("lecturesName").value = "";
+        // document.getElementById("lecturesTest").value = "";
+        // document.getElementById("lecturesDate").value = "";
+        // document.getElementById("lecturesTime").value = "";
+    }
+    let flag = true;
+    var CMid = "closeMark";
+    showCloseMark = () => {
+        if (allLecturesBox.innerHTML != "") {
+            if (flag) {
+                CMid = "closeMarkDone";
+                let allCloseMarks = document.querySelectorAll("#closeMark");
+                for (let i = 0; i < savedLectureArray.length; i++) {
+                    allCloseMarks[i].id = CMid
+                }
+                document.getElementById("editDetails").innerText = "Done";
+                document.getElementById("editDetails").id = "editDetailsDone"
+                flag = false;
+            } else {
+                CMid = "closeMark";
+                let allCloseMarks = document.querySelectorAll("#closeMarkDone");
+                for (let i = 0; i < savedLectureArray.length; i++) {
+                    allCloseMarks[i].id = CMid
+                }
+                document.getElementById("editDetailsDone").innerText = "Edit";
+                document.getElementById("editDetailsDone").id = "editDetails"
+                flag = true;
+            }
+        } else {
+            document.getElementById("editDetailsDone").innerText = "Edit";
+            document.getElementById("editDetailsDone").id = "editDetails"
+        }
+    }
+
+    deleteLecture = (i) => {
+        savedLectureArray.splice(i, 1);
+        localStorage.setItem("lectures", JSON.stringify(savedLectureArray));
+        displayLectures(savedLectureArray);
+    }
+
+    displayLectures = (lectureArray) => {
+        allLecturesBox.innerHTML = ""
+        lectureArray.map((elem, index) => {
+            allLecturesBox.innerHTML += `<i class="fa-regular fa-circle-xmark" id="${CMid}" onclick="deleteLecture('${index}')"></i>
+            <div id="allLectures">
+                    <div>
+                        <p id="savedLectureName">${elem.name
+                } ${elem.date
+                }</p>
+                        <button id="live">
+                            <a href="">Live</a>
+                        </button>
+                    </div>
+                    <span id="lectureDetails"><strong>Rampukar Yadav</strong> Scheduled <strong>${elem.test
+                }</strong> at ${elem.date
+                } - ${elem.time
+                }</span></div>`
+        })
+    }
+
+
+    let showDD = true;
+    showDropDown = () => {
+        if (showDD) {
+            document.getElementById("dropDownList").style.display = "flex"
+            showDD = false;
+            console.log(showDD);
+        } else {
+            document.getElementById("dropDownList").style.display = "none"
+            showDD = true;
+            console.log(showDD);
+        }
+    }
+    logOut = () => {
+        localStorage.removeItem("username")
+        localStorage.removeItem("userid")
+        localStorage.removeItem("useraccess")
+    }
+
+    document.getElementById("logOut").addEventListener("click", logOut);
+    document.getElementById("profileClicking").addEventListener("click", showDropDown);
+
+    displayLectures(savedLectureArray);
+    document.getElementById("editDetails").addEventListener("click", showCloseMark);
+    document.getElementById("lectureForm").addEventListener("submit", addLecture);
+</script>
